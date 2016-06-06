@@ -1,8 +1,9 @@
 package chipher2;
 
 import Transposition.ColumnarTransposition;
-import java.io.Console;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Chipher2 {
 
@@ -26,6 +27,11 @@ public class Chipher2 {
                 plainText = text.nextLine();
                 System.out.println("Frase lida: '"+plainText+"'");
                 
+                System.out.println("\nDigite uma chave secreta:");
+                key = text.nextLine();
+                System.out.println("Chave lida: '"+key+"'");
+                key = cleanKey(key);
+                System.out.println("Chave limpa: '"+key+"'");
                 ciphedText = ColumnarTransposition.encrypt(key, plainText);
                 System.out.println("Frase encriptada: '"+ciphedText+"'");
             }
@@ -35,12 +41,35 @@ public class Chipher2 {
                 System.out.println("Digite uma frase a ser decriptada:");
                 ciphedText = text.nextLine();
                 System.out.println("Frase lida: '"+ciphedText+"'");
-                
+
+                System.out.println("\nDigite uma chave secreta:");
+                key = text.nextLine();
+                System.out.println("Chave lida: '"+key+"'");
+
                 deciphedText = ColumnarTransposition.decrypt(key, ciphedText);
                 System.out.println("Frase decriptada: '"+deciphedText+"'");
             }
 
         }
+    }
+
+    private static String cleanKey(String str) {
+        String key = "";
+        
+        key = str.replaceAll("\\s+","");
+        
+        char[] chars = key.toCharArray();
+        Set<Character> charSet = new LinkedHashSet<>();
+        for (char c : chars) {
+            charSet.add(c);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        charSet.stream().forEach((character) -> {
+            sb.append(character);
+        });
+        
+        return sb.toString();
     }
     
 }
