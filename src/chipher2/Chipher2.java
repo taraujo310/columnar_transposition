@@ -29,6 +29,7 @@ public class Chipher2 {
                 ciphedText = ColumnarTransposition.encrypt(key, plainText);
                 System.out.println("Frase encriptada: '"+ciphedText+"'");
             }
+            
         
             if (op == 2) {
                 System.out.println("Digite uma frase a ser decriptada:");
