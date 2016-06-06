@@ -45,6 +45,8 @@ public class Chipher2 {
                 System.out.println("\nDigite uma chave secreta:");
                 key = text.nextLine();
                 System.out.println("Chave lida: '"+key+"'");
+                key = cleanKey(key);
+                System.out.println("Chave limpa: '"+key+"'");
 
                 deciphedText = ColumnarTransposition.decrypt(key, ciphedText);
                 System.out.println("Frase decriptada: '"+deciphedText+"'");
